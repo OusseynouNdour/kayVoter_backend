@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
 
 class Etudiant extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
 
     protected $fillable = ['user_id', 'ufr_id', 'matricule'];
 
@@ -22,5 +23,10 @@ class Etudiant extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function candidat()
+    {
+        return $this->hasOne(Candidat::class, 'etudiant_id');
     }
 }

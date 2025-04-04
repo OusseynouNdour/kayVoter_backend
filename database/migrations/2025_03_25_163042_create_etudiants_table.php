@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('ufr_id')->constrained('ufrs')->onDelete('cascade');
             $table->string('matricule')->unique();
             $table->boolean('a_vote')->default(false);
+            $table->index('ufr_id');
+            $table->index('user_id');
             $table->timestamps();
         });
     }

@@ -55,4 +55,9 @@ class User extends Authenticatable
     public function admin() {
         return $this->hasOne(Admin::class);
     }
+
+    public function isAdmin()
+    {
+        return $this->admin()->exists(); // logique de vérification admin
+    }
 }

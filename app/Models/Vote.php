@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
 
 class Vote extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
 
-    protected $fillable = ['etudiant_id', 'liste_id'];
+    protected $fillable = ['etudiant_id', 'liste_id', 'election_id'];
 
     public function etudiant() {
         return $this->belongsTo(Etudiant::class);

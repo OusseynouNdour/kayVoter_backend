@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('programmes', function (Blueprint $table) {
             $table->id();
-            $table->text('programme')->nullable();
+            $table->string('file_path'); // Stockera le chemin vers le PDF
             $table->timestamps();
         });
     }

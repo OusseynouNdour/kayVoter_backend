@@ -2,23 +2,26 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 
 class Liste extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
 
-    protected $fillable = ['nom', 'candidat_id'];
+    protected $fillable = ['nom', 'candidat_id', 'programme_id'];
 
     public function candidat() {
-        return $this->hasOne(Candidat::class);
+        return $this->belognsTo(Candidat::class);
     }
 
     public function votes() {
         return $this->hasMany(Vote::class);
     }
 
-    public function programme() {
-        return $this->hasOne(Programme::class);
+    public function programme() // Singulier !
+    {
+        return $this->belongsTo(Programme::class, 'programme_id');
     }
 }

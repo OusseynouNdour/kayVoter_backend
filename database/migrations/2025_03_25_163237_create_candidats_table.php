@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('candidats', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('etudiant_id')->constrained('etudiants')->onDelete('cascade');
-            $table->foreignid('ufr_id')->constrained('ufrs')->onDelete('cascade');
-            $table->foreignid('elections_id')->constrained('elections')->onDelete('cascade');
+            $table->foreignId('etudiant_id')->constrained('etudiants')->onDelete('cascade');
+            $table->foreignId('ufr_id')->constrained('ufrs')->onDelete('cascade');
+            $table->foreignId('election_id')->constrained('elections')->onDelete('cascade');
             $table->string('nom');
             $table->string('prenom');
             $table->string('photo')->nullable();
+            $table->index('ufr_id');
             $table->timestamps();
         });
     }

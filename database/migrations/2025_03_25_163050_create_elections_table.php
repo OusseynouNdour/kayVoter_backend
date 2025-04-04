@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('ufr_id')->constrained('ufrs')->onDelete('cascade');
             $table->dateTime('date_debut');
             $table->dateTime('date_fin');
+            $table->index('ufr_id');
             $table->timestamps();
         });
     }

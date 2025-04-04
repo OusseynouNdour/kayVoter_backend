@@ -47,6 +47,13 @@ return [
             'report' => false,
         ],
 
+        'programmes' => [  // Nouveau disk dédié
+        'driver' => 'local',
+        'root' => storage_path('app/public/programmes'),
+        'url' => env('APP_URL').'/storage/programmes',
+        'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
